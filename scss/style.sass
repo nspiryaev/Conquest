@@ -1,0 +1,851 @@
+@font-face
+  font-family: 'Roboto'
+  font-style: light
+  font-weight: 300
+  src: url('../fonts/roboto-v30-latin-300.woff2'), url('../fonts/roboto-v30-latin-300.woff')
+
+@font-face
+  font-family: 'Roboto'
+  font-style: normal
+  font-weight: 400
+  src: url('../fonts/roboto-v30-latin_cyrillic-regular.woff2'), url('../fonts/roboto-v30-latin_cyrillic-regular.woff')
+
+@font-face
+  font-family: 'Roboto'
+  font-style: medium
+  font-weight: 500
+  src: url('../fonts/roboto-v30-latin_cyrillic-500.woff2'), url('../fonts/roboto-v30-latin_cyrillic-500.woff')
+
+@font-face
+  font-family: 'Roboto'
+  font-style: bold
+  font-weight: 700
+  src: url('../fonts/roboto-v30-latin_cyrillic-700.woff2'), url('../fonts/roboto-v30-latin_cyrillic-700.woff')
+
+@font-face
+  font-family: 'Playfair Display'
+  font-style: normal
+  font-weight: 400
+  src: url('../fonts/playfair-display-v30-cyrillic_latin-regular.woff2'), url('../fonts/playfair-display-v30-cyrillic_latin-regular.woff')
+
+@font-face
+  font-family: 'Playfair Display'
+  font-style: bold
+  font-weight: 700
+  src: url('../fonts/playfair-display-v30-cyrillic_latin-700.woff2'), url('../fonts/playfair-display-v30-cyrillic_latin-700.woff')
+
+@font-face
+  font-family: 'Prata'
+  font-style: normal
+  font-weight: 400
+  src: url('../fonts/prata-v18-cyrillic_latin-regular.woff2'), url('../fonts/prata-v18-cyrillic_latin-regular.woff')
+
+@import "_normalize.scss"
+@import "_reset.scss"
+
+*
+  box-sizing: border-box
+
+html
+  font-family: 'Roboto', sans-serif
+
+a
+  text-decoration: none
+
+$color_darkGrey: #555248
+$color_grey: #8B8371
+$color_dark: #1B1A17
+$color_darkMain: #444240
+$color_orange: #D4B098
+$color_background: #FDFDFB
+
+.container
+  margin: 0 auto
+  padding: 0 15px
+  max-width: 1200px
+  @media (max-width:1199px)
+    max-width: 960px
+  @media (max-width:991px)
+    max-width: 720px
+  @media (max-width:767px)
+    max-width: 540px
+  @media (max-width:575px)
+    max-width: 100%
+
+.btn
+  display: inline-block
+  padding: 26px 38px
+  font-weight: 500
+  font-size: 12px
+  line-height: 14px
+  letter-spacing: 0.05em
+  text-transform: uppercase
+  color: white
+  &:hover
+    opacity: 0.8
+    cursor: pointer
+    transform: scale(1.025)
+
+.description
+  font-weight: 400
+  font-size: 16px
+  line-height: 150%
+  color: $color_darkMain
+  @media (max-width: 575px)
+    font-size: 14px
+
+.heading
+  font-family: 'Playfair Display'
+  font-weight: 400
+  font-size: 32px
+  line-height: 1
+  color: $color_dark
+  @media (max-width: 575px)
+    font-size: 28px
+
+.hr
+  border: none
+  border-top: 1px solid $color_grey
+  transition: border-color .3s ease
+
+// header
+
+.header
+  height: 85px
+  background-color: $color_background
+  &__container
+    display: flex
+    justify-content: space-between
+    align-items: center
+    height: 100%
+
+.main-nav
+  @media (max-width:767px)
+    position: fixed
+    top: 0
+    left: -105%
+    width: 100%
+    height: 100vh
+    background-color: rgba(253,253,251,0.9)
+    transition: left .5s ease-in-out
+    z-index: 100
+  &__list
+    display: flex
+    @media (max-width: 767px)
+      flex-direction: column
+      align-items: center
+      justify-content: space-evenly
+      height: 100%
+  &__item
+    margin-right: 65px
+    font-weight: 400
+    font-size: 14px
+    line-height: 16px
+    @media (max-width:991px)
+      margin-right: 35px
+    &:last-child
+      margin-right: 0
+    @media (max-width: 767px)
+      margin-right: 0
+      font-size: 22px
+  &__link
+    color: $color_darkGrey
+    transition: color .3s ease
+    &:hover
+      color: $color_orange
+  &_active
+    left: 0
+
+.shopping-icons
+  &__list
+    display: flex
+  &__item
+    margin-right: 23px
+    transition: transform .3s ease
+    &:last-child
+      margin-right: 0
+    &:hover
+      cursor: pointer
+      transform: scale(1.2)
+  &__search
+    height: 16px
+    width: 16px
+    background: url('../img/icons/search.svg') no-repeat center/cover
+  &__hart
+    position: relative
+    width: 19px
+    height: 16px
+    background: url('../img/icons/hart.svg') no-repeat center/cover
+  &__cart
+    width: 18px
+    height: 16px
+    background: url('../img/icons/cart.svg') no-repeat center/cover
+  &__sticker
+    position: absolute
+    top: -4px
+    right: -8px
+
+.sticker
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 13px
+  height: 13px
+  border-radius: 50%
+  background-color: $color_orange
+  font-weight: 400
+  font-size: 8px
+  line-height: 9px
+  color: $color_dark
+
+.burger
+  display: none
+
+@media (max-width: 767px)
+  .burger
+    position: relative
+    display: block
+    width: 25px
+    height: 16px
+    z-index: 100
+    span
+      display: block
+      margin-bottom: 5px
+      width: 100%
+      height: 2px
+      background-color: $color_darkGrey
+      transition: transform .5s ease-in-out
+      &:last-child
+        margin-bottom: 0
+
+  .burger_active
+    span
+      margin-bottom: -2px
+      &:nth-child(1)
+        transform: translateY(3px) rotate(-45deg)
+      &:nth-child(2)
+        display: none
+      &:nth-child(3)
+        transform: translateY(3px) rotate(45deg)
+
+// section-hero
+
+.section-hero
+  background-color: $color_background
+  &__container
+    position: relative
+    display: flex
+    align-items: center
+    padding: 236px 0
+    overflow: hidden
+    @media (max-width: 1199px)
+      padding: 180px 0
+    @media (max-width: 991px)
+      padding: 100px 0 200px 0
+    @media (max-width:767px)
+      padding: 50px 0 100px 0
+    @media (max-width:575px)
+      padding: 50px 0 250px 0
+  &__content
+    position: relative
+    flex: 0 1 45%
+    padding-left: 87px
+    font-family: 'Playfair Display'
+    font-weight: 400
+    line-height: 1
+    color: $color_dark
+    z-index: 1
+    @media (max-width: 991px)
+      flex: 0 1 60%
+    @media (max-width:767px)
+      padding-left: 60px
+    @media (max-width:575px)
+      flex: 1 1 100%
+      display: flex
+      flex-direction: column
+      align-items: center
+      padding-left: 0
+      text-align: center
+  &__season
+    position: relative
+    margin-bottom: 16px
+    font-size: 45px
+    @media (max-width: 991px)
+      margin-bottom: 10px
+    @media (max-width:767px)
+      font-size: 32px
+  &__collection
+    margin-bottom: 39px
+    font-size: 30px
+    @media (max-width: 991px)
+      margin-bottom: 20px
+    @media (max-width:767px)
+      font-size: 26px
+  &__heading
+    margin-bottom: 64px
+    font-size: 14px
+    line-height: 21px
+    font-weight: 300
+    color: rgba(27, 26, 23, 0.82)
+    @media (max-width: 991px)
+      margin-bottom: 35px
+  &__btn
+    font-weight: 500
+    font-size: 12px
+    letter-spacing: 0.05em
+    text-transform: uppercase
+    background-color: $color_darkMain
+  &__hr
+    position: absolute
+    top: 2px
+    left: -60px
+    width: 50px
+    @media (max-width: 575px)
+      width: 25px
+      left: -30px
+  &__image
+    position: absolute
+    top: 50%
+    right: 300px
+    transform: translateY(-50%)
+    @media (max-width: 1199px)
+      right: 225px
+    @media (max-width: 991px)
+      right: 115px
+    @media (max-width:767px)
+      right: 75px
+    @media (max-width: 575px)
+      right: 165px
+  &__watch-image                // Вариант №2: Позиционирование готового изображения
+    position: absolute
+    top: 50%
+    right: 100px
+    transform: translateY(-50%)
+    @media (max-width: 1199px)
+      right: 60px
+    @media (max-width: 991px)
+      right: -35px
+    @media (max-width:767px)
+      right: -26px
+    @media (max-width: 575px)
+      top: 54%
+      right: 105px
+      transform: none
+
+.image
+  &__container
+    position: relative
+
+.rectangle
+  width: 496px
+  height: 944px
+  overflow: hidden
+  @media (max-width: 1199px)
+    width: 380px
+    height: 722px
+  &__semicircle
+    width: 992px
+    height: 944px
+    border-radius: 50%
+    background: linear-gradient(180deg, rgba(234, 227, 212, 0) 0%, #EAE3D4 100%)
+    mix-blend-mode: normal
+    transform: matrix(-1, 0, 0, 1, 0, 0)
+    @media (max-width: 1199px)
+      width: 759px
+      height: 722px
+
+.watch
+  position: absolute
+  bottom: 5%
+  right: -200px
+  @media (max-width: 1199px)
+    bottom: 0
+    right: -175px
+  @media (max-width: 991px)
+    bottom: 60px
+    right: -150px
+  @media (max-width:767px)
+    bottom: 150px
+    right: -100px
+  @media (max-width:575px)
+    bottom: 80px
+    right: -65px
+  &__container
+    position: relative
+    font-family: 'Prata', serif
+    font-weight: 400
+    font-size: 16px
+    line-height: 22px
+    color: $color_dark
+    @media (max-width: 575px)
+      font-size: 14px
+  &__price
+    position: absolute
+    top: 18%
+    left: -50px
+    @media (max-width: 991px)
+      display: none
+    @media (max-width: 575px)
+      top: 12%
+      display: block
+  &__diameter
+    position: absolute
+    bottom: 18%
+    right: -50px
+    @media (max-width: 991px)
+      display: none
+    @media (max-width: 575px)
+      display: block
+      right: -90px
+  &__img
+    width: 100%
+    @media (max-width: 1199px)
+      width: 420px
+    @media (max-width: 991px)
+      width: 350px
+    @media (max-width:767px)
+      width: 240px
+    @media (max-width:575px)
+      width: 160px
+
+.price
+  &__container
+    position: relative
+  &__hr
+    position: absolute
+    top: 2px
+    right: -60px
+    width: 50px
+    @media (max-width: 575px)
+      right: -30px
+      width: 25px
+
+.diameter
+  &__container
+    position: relative
+  &__hr
+    position: absolute
+    top: 2px
+    left: -60px
+    width: 50px
+    @media (max-width: 575px)
+      left: -30px
+      width: 25px
+
+// Вариант №2: Позиционирование готового изображения
+
+.img-wrapper
+  position: relative
+  &__container
+    position: relative
+    font-family: 'Prata', serif
+    font-weight: 400
+    font-size: 16px
+    line-height: 22px
+    color: $color_dark
+    @media (max-width: 575px)
+      font-size: 14px
+  &__price
+    position: absolute
+    top: 18%
+    left: 180px
+    @media (max-width: 1199px)
+      left: 150px
+    @media (max-width: 991px)
+      display: none
+    @media (max-width: 575px)
+      display: block
+      top: 15%
+      left: 0
+  &__diameter
+    position: absolute
+    bottom: 18%
+    right: -50px
+    @media (max-width: 991px)
+      display: none
+    @media (max-width: 575px)
+      right: -93px
+      display: block
+  &__watch
+    @media (max-width: 1199px)
+      width: 600px
+    @media (max-width: 991px)
+      width: 493px
+    @media (max-width: 767px)
+      width: 345px
+    @media (max-width: 575px)
+      width: 200px
+// section-models
+
+.section-models
+  padding: 79px 0 66px 0
+  @media (max-width: 991px)
+    padding: 35px 0 25px 0
+  &__heading
+    margin-bottom: 52px
+    text-align: center
+
+.list-watch
+  position: relative
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  margin: 0 -17px
+  &__item
+    flex: 0 1 33.33%
+    padding: 0 17px
+    margin-bottom: 20px
+    @media (max-width: 991px)
+      flex: 0 1 50%
+    @media (max-width: 575px)
+      flex: 0 1 100%
+  &__see-all
+    position: absolute
+    top: -45px
+    right: 15px
+    @media (max-width: 991px)
+      top: -35px
+
+.card
+  display: flex
+  flex-direction: column
+  padding: 40px 30px
+  font-family: 'Playfair Display'
+  font-weight: 400
+  line-height: 1
+  color: $color_dark
+  background-color: $color_background
+  &__name
+    margin-bottom: 10px
+    font-weight: 700
+    font-size: 14px
+    letter-spacing: 0.03em
+  &__price
+    font-family: 'Prata'
+    font-weight: 400
+    font-size: 12px
+    color: rgba(27, 26, 23, 0.82)
+  &__img
+    align-self: center
+    margin-bottom: 19px
+    max-width: 100%
+  &__link
+    position: relative
+    display: block
+    padding-left: 40px
+    font-size: 16px
+    color: $color_dark
+    transition: color .3s ease
+    &:hover
+      color: $color_orange
+      .hr
+        border-color: $color_orange
+  &__hr
+    position: absolute
+    top: 0
+    left: 0
+    width: 30px
+
+.see-all
+  &__inner
+    position: relative
+    &::after
+      content: ''
+      position: absolute
+      bottom: -10px
+      left: 0
+      width: 100%
+      border-top: 1px solid #C4C0B6
+      @media (max-width: 991px)
+        bottom: -5px
+  &__link
+    font-weight: 500
+    font-size: 16px
+    line-height: 19px
+    color: $color_darkMain
+    transition: color .3s ease
+    @media (max-width: 575px)
+      font-size: 14px
+    &:hover
+      color: $color_orange
+
+// section-quality
+
+.section-quality
+  position: relative
+  padding: 50px 0 20px 0
+  background-color: $color_background
+  overflow: hidden
+  &::before
+    content: ""
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 60%
+    background: #F7F5EF
+  &__container
+    position: relative
+    display: flex
+    justify-content: space-around
+    align-items: center
+    z-index: 1
+    @media (max-width: 991px)
+      flex-direction: column
+  &__swiper
+    @media (max-width: 991px)
+      margin-bottom: 20px
+  &__content
+    width: 400px
+    @media (max-width: 1199px)
+      width: 350px
+    @media (max-width: 991px)
+      width: 100%
+      text-align: center
+  &__heading
+    margin-bottom: 40px
+    @media (max-width: 991px)
+      margin-bottom: 20px
+  &__description
+    margin-bottom: 45px
+    @media (max-width: 991px)
+      margin-bottom: 25px
+  &__btn
+    background-color: $color_orange
+  &__first-circle
+    position: absolute
+    top: -150px
+    right: -250px
+  &__second-circle
+    position: absolute
+    top: -50px
+    right: -620px
+
+.circle
+  width: 365.16px
+  height: 365.16px
+  border: 1px solid $color_orange
+  border-radius: 50%
+
+.circle_big
+  width: 744.38px
+  height: 744.38px
+
+.swiper
+  &__container
+    margin-bottom: 3%
+  &__arrows
+    padding-right: 10%
+    text-align: right
+  &__arrow-prev,
+  &__arrow-next
+    border: none
+    background: none
+    &:hover
+      cursor: pointer
+      path
+        stroke: $color_orange
+  &__arrow-prev
+    margin-right: 10px
+  &__paging-info
+    display: inline-block
+    margin-right: 10px
+    font-family: 'Prata'
+    font-weight: 400
+    font-size: 12px
+    line-height: 16px
+    color: rgba(27, 26, 23, 0.82)
+  &__arrow-next
+    svg
+      transform: rotate(180deg)
+  &__img
+    max-width: 100%
+
+// section-follow
+
+.section-follow
+  padding: 80px 0 90px 0
+  @media (max-width: 991px)
+    padding: 40px 0
+  &__container
+    display: flex
+    justify-content: space-between
+    align-items: center
+    @media (max-width: 991px)
+      flex-direction: column
+  &__content
+    @media (max-width: 991px)
+      display: flex
+      flex-direction: column
+      align-items: center
+      text-align: center
+  &__heading
+    margin-bottom: 40px
+    @media (max-width: 991px)
+      margin-bottom: 20px
+  &__description
+    margin-bottom: 120px
+    width: 380px
+    @media (max-width: 991px)
+      margin-bottom: 20px
+      width: 100%
+  &__link
+    font-weight: 700
+    color: $color_dark
+    transition: color .3s ease
+    &:hover
+      color: $color_orange
+
+.list-social
+  display: flex
+  align-items: center
+  @media (max-width: 991px)
+    margin-bottom: 40px
+  @media (max-width: 575px)
+    margin-bottom: 25px
+  &__item
+    margin-right: 18px
+    &:last-child
+      margin-right: 0
+    svg
+      path
+        transition: fill .3s ease
+    &:hover
+      svg
+        path
+          fill: $color_orange
+
+.images
+  display: flex
+  justify-content: space-between
+  width: auto
+  height: auto
+  &__img-small
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    margin-right: 1.6%
+  &__img-big
+    display: flex
+  &__img
+    max-width: 100%
+
+// footer
+
+.footer
+  padding: 67px 0
+  background-color: $color_darkMain
+  @media (max-width: 575px)
+    padding: 50px 0
+  &__list
+    display: flex
+    justify-content: space-around
+    align-items: flex-start
+    @media (max-width: 991px)
+      justify-content: space-between
+    @media (max-width: 767px)
+      flex-wrap: wrap
+    @media (max-width: 575px)
+      flex-direction: column
+      align-items: center
+  &__item
+    @media (max-width: 575px)
+      margin-bottom: 30px
+      width: 180px
+      &:last-child
+        margin-bottom: 0
+    &:first-child
+      transform: translateY(-15px)
+      @media (max-width: 767px)
+        flex-basis: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+        margin-bottom: 20px
+      @media (max-width: 575px)
+        align-items: flex-start
+  &__logo
+    margin-bottom: 23px
+  &__phone
+    margin-bottom: 15px
+  &__heading
+    margin-bottom: 32px
+    font-weight: 700
+    font-size: 14px
+    line-height: 16px
+    letter-spacing: 0.07em
+    text-transform: uppercase
+    color: white
+    @media (max-width: 575px)
+      margin-bottom: 0
+      cursor: pointer
+
+.phone
+  &__link
+    font-weight: 400
+    font-size: 12px
+    line-height: 14px
+    color: rgba(255, 255, 255, 0.75)
+    transition: color .3s ease
+    &:hover
+      color: $color_orange
+
+.email
+  &__link
+    font-weight: 400
+    font-size: 12px
+    line-height: 14px
+    color: rgba(255, 255, 255, 0.75)
+    transition: color .3s ease
+    &:hover
+      color: $color_orange
+
+.about-company
+  &__item
+    margin-bottom: 15px
+    font-weight: 400
+    font-size: 12px
+    line-height: 14px
+    &:last-child
+      margin-bottom: 0
+  &__link
+    color: rgba(255, 255, 255, 0.75)
+    transition: color .3s ease
+    &:hover
+      color: $color_orange
+
+.buyers
+  &__item
+    margin-bottom: 15px
+    font-weight: 400
+    font-size: 12px
+    line-height: 14px
+    &:last-child
+      margin-bottom: 0
+  &__link
+    color: rgba(255, 255, 255, 0.75)
+    transition: color .3s ease
+    &:hover
+      color: $color_orange
+
+.payment
+  &__item
+    margin-bottom: 15px
+    font-weight: 400
+    font-size: 12px
+    line-height: 14px
+    &:last-child
+      margin-bottom: 0
+  &__link
+    color: rgba(255, 255, 255, 0.75)
+    transition: color .3s ease
+    &:hover
+      color: $color_orange
+
+@media (max-width: 575px)
+  .footer-menu
+    display: none
+
+  .footer-menu_active
+    display: block
+    padding-top: 32px
